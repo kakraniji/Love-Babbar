@@ -1,3 +1,5 @@
+//FIRST METHOD:
+
 int intersectPoint(Node* head1, Node* head2)
 {
    struct Node *p=head1;
@@ -40,3 +42,41 @@ int intersectPoint(Node* head1, Node* head2)
     
     return -1;
 }
+
+//2ND METHOD:
+
+int intersectPoint(Node* head1, Node* head2)
+{
+   struct Node *p=head1;
+   struct Node *q=head2;
+   stack<Node*>s1;
+   stack<Node*>s2;
+   while(p!=NULL)
+   {
+       s1.push(p);
+       p=p->next;
+   }
+   while(q!=NULL)
+   {
+       s2.push(q);
+       q=q->next;
+   }
+   struct Node* x;
+   if(s1.top()!=s2.top())
+   return -1;
+   else
+   {
+   while(s1.top()==s2.top())
+   {
+       x=s1.top();
+       s1.pop();
+       s2.pop();
+     }
+       
+     return x->data;
+   }
+   
+   
+}
+
+
