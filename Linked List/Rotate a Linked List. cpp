@@ -1,0 +1,32 @@
+//assume that k is smaller than the count of nodes in linked list!!
+
+Node* rotate(Node* head, int k) {
+    struct Node *x=head;
+    int c=0;
+    while(x!=NULL)
+    {
+        c++;
+        x=x->next;
+        
+    }
+    if(k>=c)
+    return head;
+    struct Node *p=head;
+    struct Node *q;
+    struct Node *r;
+    for(int i=0;i<k;i++)
+    {
+        q=p;
+        p=p->next;
+    }
+    q->next=NULL;
+    r=p;
+    while(p->next!=NULL)
+    p=p->next;
+    p->next=head;
+    head=r;
+    return head;
+    
+
+    
+}
